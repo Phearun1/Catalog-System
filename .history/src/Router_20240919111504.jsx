@@ -1,0 +1,28 @@
+// src/Router.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './src/pages/Home';
+import About from './src/pages/About';
+import NotFound from './src/pages/Notfound';
+import UserProfile from './src/pages/UserProfile';
+import Dashboard from './src/pages/Dashboard';
+
+
+function AppRouter() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/user/:userId" element={<UserProfile />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="overview" element={<Overview />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default AppRouter;
